@@ -15,7 +15,7 @@ A powerful bash script that automates your entire deployment workflow from git c
 ## 🎬 Demo
 
 ```bash
-$ deploy
+$ blah
 Quick commit options:
 1. fix: bug fixes
 2. feat: new feature
@@ -53,15 +53,15 @@ Choice: 1
 
 ```bash
 # Download and install
-curl -L https://raw.githubusercontent.com/YOUR_USERNAME/vercel-deploy-script/main/install.sh | bash
+curl -L https://raw.githubusercontent.com/adamludwin/blah/main/install.sh | bash
 ```
 
 ### Option 2: Manual Install
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/vercel-deploy-script.git
-cd vercel-deploy-script
+git clone https://github.com/adamludwin/blah.git
+cd blah
 
 # Make it executable
 chmod +x deploy.sh
@@ -79,15 +79,15 @@ source ~/.zshrc  # or ~/.bashrc
 
 ### Interactive Mode
 ```bash
-deploy
+blah
 # Shows menu with options 1-3 or custom message
 ```
 
 ### Direct Message
 ```bash
-deploy "feat: add new dashboard component"
-deploy "fix: resolve mobile layout issue"
-deploy "style: update button colors"
+blah "feat: add new dashboard component"
+blah "fix: resolve mobile layout issue"
+blah "style: update button colors"
 ```
 
 ## 🔧 Configuration
@@ -141,7 +141,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🐛 Issues & Support
 
 If you encounter any issues or have suggestions:
-1. Check existing [Issues](https://github.com/YOUR_USERNAME/vercel-deploy-script/issues)
+1. Check existing [Issues](https://github.com/adamludwin/blah/issues)
 2. Create a new issue with detailed information
 3. Include your macOS version and Vercel CLI version
 

@@ -21,7 +21,7 @@ mkdir -p "$INSTALL_DIR"
 
 # Download the script
 echo "📥 Downloading deploy script..."
-curl -L https://raw.githubusercontent.com/YOUR_USERNAME/vercel-deploy-script/main/deploy.sh -o "$INSTALL_DIR/deploy.sh"
+curl -L https://raw.githubusercontent.com/adamludwin/blah/main/deploy.sh -o "$INSTALL_DIR/deploy.sh"
 
 if [ $? -ne 0 ]; then
     echo "❌ Failed to download script"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy() {
+blah() {
   # Handle commit message
   if [ -z "$1" ]; then
     echo "Quick commit options:"
