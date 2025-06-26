@@ -87,7 +87,67 @@ blah() {
     
     case "$STATE" in
       "Building"|"Queued"|"Initializing")
-        echo "🔄 Status: $STATE (still working...)"
+        # Try to get a fresh fun fact from API
+        api_fact=""
+        
+        # Try multiple APIs for variety
+        case $((RANDOM % 4)) in
+          0)
+            # Useless Facts API
+            api_fact=$(curl -s --max-time 3 "https://uselessfacts.jsph.pl/random.json?language=en" 2>/dev/null | grep -o '"text":"[^"]*"' | sed 's/"text":"//;s/"$//' | head -1)
+            ;;
+          1)
+            # Cat Facts API
+            api_fact=$(curl -s --max-time 3 "https://cat-fact.herokuapp.com/facts/random" 2>/dev/null | grep -o '"text":"[^"]*"' | sed 's/"text":"//;s/"$//' | head -1)
+            ;;
+          2)
+            # Numbers API (random trivia)
+            api_fact=$(curl -s --max-time 3 "http://numbersapi.com/random/trivia" 2>/dev/null)
+            ;;
+          3)
+            # Random Dog Image + Fact combo
+            api_fact="Did you know dogs can be trained to detect diseases like cancer and diabetes? 🐕"
+            ;;
+        esac
+        
+        # Fallback fun facts if API fails
+        if [ -z "$api_fact" ] || [ ${#api_fact} -lt 10 ]; then
+          fallback_facts=(
+            "Vercel processes over 12 billion requests per week! 📊"
+            "The first website ever created is still online at info.cern.ch 🌐"
+            "JavaScript was created in just 10 days by Brendan Eich ⚡"
+            "A group of cats is called a 'clowder' 🐱"
+            "Octopuses have three hearts and blue blood 🐙"
+            "Honey never spoils - archaeologists found edible honey in Egyptian tombs! 🍯"
+            "A single cloud can weigh more than a million pounds ☁️"
+            "Bananas are berries, but strawberries aren't 🍌"
+            "The human brain uses 20% of the body's total energy 🧠"
+            "There are more possible games of chess than atoms in the observable universe ♟️"
+            "Wombat poop is cube-shaped 📦"
+            "A shrimp's heart is in its head 🦐"
+            "Hot water freezes faster than cold water (Mpemba effect) 🧊"
+            "There are more trees on Earth than stars in the Milky Way 🌳"
+            "Your stomach gets an entirely new lining every 3-5 days 🫄"
+            "The Great Wall of China isn't visible from space with the naked eye 🏯"
+            "Bubble wrap was originally invented as wallpaper 🫧"
+            "A group of flamingos is called a 'flamboyance' 🦩"
+            "Dolphins have names for each other 🐬"
+            "The shortest war in history lasted only 38-45 minutes ⚔️"
+          )
+          
+          fact_index=$((RANDOM % ${#fallback_facts[@]}))
+          api_fact="${fallback_facts[$fact_index]}"
+        fi
+        
+        # Clean up the fact and add emoji if it doesn't have one
+        fun_fact="$api_fact"
+        if [[ ! "$fun_fact" =~ [🎲🎯🎪🎨🎭🎪🎊🎉⭐🌟💫✨🔥💡🧠🌍🌎🌏🌈🦄🎈🎁🎀🎂🍰🎃🎄🎆🎇] ]]; then
+          emojis=("🎲" "🎯" "🎪" "🎨" "🎭" "🎊" "🎉" "⭐" "🌟" "💫" "✨" "🔥" "💡" "🧠" "🌍" "🌈" "🦄")
+          emoji_index=$((RANDOM % ${#emojis[@]}))
+          fun_fact="$fun_fact ${emojis[$emoji_index]}"
+        fi
+        
+        echo "🔄 Status: $STATE ($fun_fact)"
         sleep 5
         ;;
       "Ready")

@@ -7,6 +7,7 @@ A powerful bash script that automates your entire deployment workflow from git c
 - **Smart commit messages** with interactive menu or custom input
 - **Automated git workflow** (status → add → commit → push)
 - **Real-time Vercel monitoring** tracks deployment status from Building → Ready
+- **Fresh fun facts** fetched from APIs to keep you entertained during builds 🎲
 - **Audio feedback** with system sounds (success/failure)
 - **macOS notifications** for deployment results
 - **Colorized terminal output** for better readability
@@ -32,8 +33,8 @@ Choice: 1
 🔍 Finding the latest deployment...
 📦 Monitoring deployment: https://your-app-xyz.vercel.app
 
-🔄 Status: Building (still working...)
-🔄 Status: Building (still working...)
+🔄 Status: Building (The average person walks past 36 murderers in their lifetime 🎲)
+🔄 Status: Building (A cat has been mayor of Talkeetna, Alaska, for 15 years 🎪)
 ✅ Deployment READY! 🎉
 🔗 URL: https://your-app-xyz.vercel.app
 
